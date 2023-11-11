@@ -8,7 +8,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Home</RouterLink> |
+          <RouterLink to="/">Events</RouterLink> |
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
@@ -20,7 +20,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <style>
 #layout {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-rendering: optimizeLegibility;
+  text-rendering: opt imizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
