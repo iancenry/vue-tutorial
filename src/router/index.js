@@ -7,7 +7,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'event-list',
-      component: EventListView
+      component: EventListView,
+      // Parse & set the current page from the router using Function Mode
+      // if page exists parse the string to an int else return 1
+      props: (route) => ({ page: parseInt(route.query.page) || 1 })
     },
     {
       path: '/event/:id',
