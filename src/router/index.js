@@ -6,6 +6,8 @@ import EventRegister from '@/views/event/Register.vue'
 import EventEdit from '@/views/event/Edit.vue'
 import NotFound from '../views/NotFound.vue'
 import NetworkError from '@/views/NetworkError.vue'
+// lazy loaded
+const About = () => import('../views/AboutView.vue')
 
 const routes = [
   {
@@ -56,7 +58,7 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: () => import('../views/AboutView.vue')
+    component: About
   },
   {
     // handle event that doesn't exist - can be reusd for other resources
@@ -80,7 +82,11 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior() {
+    // always scroll to top
+    return { top: 0 }
+  }
 })
 
 export default router
