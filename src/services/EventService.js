@@ -14,7 +14,7 @@ export default {
   // events to return per page, page we are on
   getEvents(perPage, page) {
     // /events added onto baseURL
-    return apiClient.get(`/events?_limit='${perPage}'&page='${page}'`)
+    return apiClient.get(`/events?_limit=${perPage}&_page=${page}`)
   },
   getEvent(id) {
     // /events added onto baseURL
