@@ -15,7 +15,7 @@ const routes = [
     props: (route) => ({ page: parseInt(route.query.page) || 1 })
   },
   {
-    path: '/event/:id',
+    path: '/events/:id',
     name: 'EventLayout',
     // send in our route params as component props
     props: true,
@@ -37,6 +37,18 @@ const routes = [
         name: 'EventEdit',
         component: EventEdit
       }
+    ]
+  },
+  {
+    // event/:id will redirect to events/:id
+    path: '/event/:id',
+    redirect: (to) => {
+      // return { name: 'EventDetails', parmas: { id: to.params.id } } - no need for id since it will be auto passed through
+      return { name: 'EventDetails' }
+    },
+    children: [
+      { path: 'register', redirect: () => ({ name: 'EventRegister' }) },
+      { path: 'edit', redirect: () => ({ name: 'EventEdit' }) }
     ]
   },
   {
