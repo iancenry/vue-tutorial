@@ -4,6 +4,7 @@ import EventLayout from '@/views/event/Layout.vue'
 import EventDetails from '@/views/event/Details.vue'
 import EventRegister from '@/views/event/Register.vue'
 import EventEdit from '@/views/event/Edit.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
@@ -55,6 +56,19 @@ const routes = [
     path: '/about',
     name: 'About',
     component: () => import('../views/AboutView.vue')
+  },
+  {
+    // handle event that doesn't exist - can be reusd for other resources
+    path: '/404/:resource',
+    name: '404Resource',
+    component: NotFound,
+    props: true
+  },
+  {
+    // handle page that doesn't exist
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 
