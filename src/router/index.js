@@ -18,6 +18,20 @@ const routes = [
     component: () => import('../views/event/Details.vue')
   },
   {
+    path: '/event/:id/register',
+    name: 'EventRegister',
+    // send in our route params as component props
+    props: true,
+    component: () => import('../views/event/Register.vue')
+  },
+  {
+    path: '/event/:id/edit',
+    name: 'EventEdit',
+    // send in our route params as component props
+    props: true,
+    component: () => import('../views/event/Edit.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('../views/AboutView.vue')

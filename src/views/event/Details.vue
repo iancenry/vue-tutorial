@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup>
 import { ref, onMounted } from 'vue'
 import EventService from '../../services/EventService.js'
@@ -20,6 +21,22 @@ onMounted(() => {
 <template>
   <div v-if="event">
     <h1>{{ event.title }}</h1>
+    <div id="nav">
+      <!-- /event/2 -->
+      <router-link :to="{ name: 'EventDetails', params: { id } }"
+        >Details</router-link
+      >
+      |
+      <!-- /event/2/register -->
+      <router-link :to="{ name: 'EventRegister', params: { id } }"
+        >Register</router-link
+      >
+      |
+      <!--  /event/2/register  -->
+      <router-link :to="{ name: 'EventEdit', params: { id } }"
+        >Edit</router-link
+      >
+    </div>
     <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
     <p>{{ event.description }}</p>
     <button>
