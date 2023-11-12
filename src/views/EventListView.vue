@@ -1,6 +1,6 @@
 <script setup>
 import EventCard from '../components/EventCard.vue'
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService.js'
 
 // pull query params passed as props from router
@@ -8,12 +8,18 @@ const props = defineProps(['page'])
 
 const page = computed(() => props.page)
 
-const events = ref(null)
+const events = ref('')
+const totalEvents = ref(0)
 
 onMounted(() => {
-  EventService.getEvents(2, page.value)
-    .then((res) => (events.value = res.data))
-    .catch((err) => console.error(err))
+  // when reactive objects(i.e page value) that are accessed inside this function change, run this func again
+  watchEffect(() => {
+    // clear out the events on the page, so user knows API has been called not hanging
+    events.value = null
+    EventService.getEvents(2, page.value)
+      .then((res) => (events.value = res.data))
+      .catch((err) => console.error(err))
+  })
 })
 </script>
 
