@@ -30,7 +30,7 @@ onMounted(() => {
         // store total number of events
         totalEvents.value = res.headers['x-total-count']
       })
-      .catch((err) => router.push({ name: 'NetworkError' }))
+      .catch(() => router.push({ name: 'NetworkError' }))
   })
 })
 </script>
