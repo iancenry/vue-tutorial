@@ -1,3 +1,4 @@
+<!-- TODO check why script is underlined -->
 <script setup>
 import EventCard from '../components/EventCard.vue'
 import { ref, onMounted, computed, watchEffect } from 'vue'
